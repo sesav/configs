@@ -1,0 +1,7 @@
+# bind diff  <Up>   move-up
+# bind diff  <Down> move-down
+# bind stage <Up>   move-up
+# bind stage <Down> move-down
+#
+# set main-view = date:local=yes author:full commit-title:graph=yes,refs=yes,overflow=72
+set main-view-date-display = relative

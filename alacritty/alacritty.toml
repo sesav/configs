@@ -1,0 +1,62 @@
+[general]
+import = ["/home/sesav/.config/alacritty/dracula.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font]
+size = 12.0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "FantasqueSansM Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[scrolling]
+history = 50000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+dynamic_padding = false
+dynamic_title = true
+opacity = 1.0
+
+[window.dimensions]
+columns = 150
+lines = 40
+
+[window.padding]
+x = 0
+y = 0
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Right"
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
