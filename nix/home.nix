@@ -7,39 +7,36 @@
   ];
 
   home.packages = with pkgs; [
-    # build
     autoconf
-    cmake
-    flex
-    gcc
-    gnumake
-    m4
-    pkgconf
-    swig
-
-    # Shell & terminal
     bash
-    fish
-    less
-    mc
-    starship
-    tmux
-
-    # Editors
-    # ed
-    # nano
-
-    # VS 
-    git
-    gh
-    tig
-
-    # Search & navigation
+    cmake
     fd
+    fish
+    flex
     fzf
+    gcc
+    gh
+    git
+    gnumake
+    htop
     jq
+    less
+    m4
+    mc
+    pkgconf
+    restic
     ripgrep
+    screen
+    starship
+    swig
+    tig
+    tldr
+    tmux
     tree
+    tree-sitter
+    unzip
+    watch
+    zip
 
     # GNU utilities
     coreutils
@@ -55,13 +52,13 @@
     patch
 
     # Lang & runtimes
+    python314
     go
     jdk
     lua
     lua-language-server
     luarocks
     nodejs_24
-    poetry
     rustup
     uv
     yarn
@@ -79,7 +76,7 @@
     minikube
 
     # Databases
-    postgresql_16
+    postgresql_18
     redis
 
     # Security & crypto
@@ -104,16 +101,6 @@
     pandoc
     plantuml
     yt-dlp
-
-    # Sys utilities
-    htop
-    restic
-    screen
-    tldr
-    tree-sitter
-    unzip
-    watch
-    zip
 
     # Dev
     ctags

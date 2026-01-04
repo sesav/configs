@@ -1,21 +1,17 @@
 { pkgs, ... }:
-let
-  myPython = pkgs.python3.withPackages (ps: with ps; [ pip pynvim ]);
-in {
+{
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     vimAlias = true;
     withPython3 = true;
-    extraPython3Packages = ps: [ ps.pynvim ];
+    extraPython3Packages = ps: [ ps.pynvim ps.pip ];
+    extraPackages = with pkgs; [
+      (python3.withPackages (ps: with ps; [ pynvim pip ]))
+    ];
   };
 
-  home.packages = with pkgs; [
-    myPython
-  ];
-
   home.sessionVariables = {
-    NEOVIM_PYTHON3 = "${myPython}/bin/python3";
     EDITOR = "nvim";
   };
 
