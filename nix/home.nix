@@ -6,6 +6,11 @@
     ./neovim.nix
   ];
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
     autoconf
     cmake
@@ -51,7 +56,15 @@
     lua-language-server
     luarocks
     nodejs_24
-    python314
+    (python314.withPackages (ps: with ps; [
+      ipykernel
+      ipython
+      jupyter
+      pip
+      setuptools
+      virtualenv
+      wheel
+    ]))
     rustup
     uv
     yarn
@@ -107,7 +120,7 @@
     tokei
     zoxide
 
-    # Shell's
+    # Shells
     bash
     fish
 
