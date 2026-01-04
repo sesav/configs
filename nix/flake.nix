@@ -11,15 +11,26 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."sesav" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
+      mkHomeConfiguration = system: username: home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./home.nix
+          {
+            home.username = username;
+            home.homeDirectory = if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
+              then "/Users/${username}"
+              else "/home/${username}";
+          }
         ];
+      };
+    in {
+      homeConfigurations = {
+        # x86_64
+        "sesav@x86_64-linux" = mkHomeConfiguration "x86_64-linux" "sesav";
+        # macOS
+        "cwm@aarch64-darwin" = mkHomeConfiguration "aarch64-darwin" "cwm";
+        "sesav" = mkHomeConfiguration "aarch64-darwin" "sesav";
+        "cwm" = mkHomeConfiguration "aarch64-darwin" "cwm";
       };
     };
 }
