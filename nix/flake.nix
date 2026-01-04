@@ -27,9 +27,9 @@
       homeConfigurations = {
         # x86_64
         "sesav@x86_64-linux" = mkHomeConfiguration "x86_64-linux" "sesav";
+        "sesav" = mkHomeConfiguration "x86_64-linux" "sesav";
         # macOS
         "cwm@aarch64-darwin" = mkHomeConfiguration "aarch64-darwin" "cwm";
-        "sesav" = mkHomeConfiguration "aarch64-darwin" "sesav";
         "cwm" = mkHomeConfiguration "aarch64-darwin" "cwm";
       };
     };
