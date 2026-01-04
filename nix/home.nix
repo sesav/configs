@@ -8,15 +8,10 @@
 
   home.packages = with pkgs; [
     autoconf
-    bash
     cmake
     fd
-    fish
     flex
-    fzf
     gcc
-    gh
-    git
     gnumake
     htop
     jq
@@ -29,9 +24,7 @@
     screen
     starship
     swig
-    tig
     tldr
-    tmux
     tree
     tree-sitter
     unzip
@@ -47,18 +40,18 @@
     gnugrep
     gnused
     gnutar
-    which
     gzip
     patch
+    which
 
     # Lang & runtimes
-    python314
     go
     jdk
     lua
     lua-language-server
     luarocks
     nodejs_24
+    python314
     rustup
     uv
     yarn
@@ -68,11 +61,11 @@
     ansible
     docker
     docker-compose
-    kubernetes-helm
     k9s
     kcat
     kubectl
     kubectx
+    kubernetes-helm
     minikube
 
     # Databases
@@ -104,7 +97,19 @@
 
     # Dev
     ctags
+    fzf
+    gh
+    git
+    ruff
     stylua
+    tig
+    tmux
+    tokei
+    zoxide
+
+    # Shell's
+    bash
+    fish
 
     # Shell enhancements
     zsh-syntax-highlighting
