@@ -23,5 +23,5 @@ home-manager switch --flake .#sesav@aarch64-darwin
 Update dependencies:
 ```shell
 nix flake update
-home-manager switch --flake .#sesav
+home-manager switch --flake .#sesav@<arch>
 ```
