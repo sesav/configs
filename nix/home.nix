@@ -73,8 +73,6 @@
 
     # DevOps & Cloud
     ansible
-    docker
-    docker-compose
     k9s
     kcat
     kubectl
@@ -132,5 +130,9 @@
     # Other
     home-manager
     zola
+  ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+    # Linux only
+    docker
+    docker-compose
   ];
 }
