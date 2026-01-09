@@ -18,7 +18,7 @@
           {
             home.username = username;
             home.homeDirectory = if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
-              then "/Users/${username}"
+              then "/Users/cwm"
               else "/home/${username}";
           }
         ];
@@ -27,10 +27,9 @@
       homeConfigurations = {
         # x86_64
         "sesav@x86_64-linux" = mkHomeConfiguration "x86_64-linux" "sesav";
-        "sesav" = mkHomeConfiguration "x86_64-linux" "sesav";
         # macOS
-        "cwm@aarch64-darwin" = mkHomeConfiguration "aarch64-darwin" "cwm";
-        "cwm" = mkHomeConfiguration "aarch64-darwin" "cwm";
+        "sesav@aarch64-darwin" = mkHomeConfiguration "aarch64-darwin" "sesav";
+        "sesav" = mkHomeConfiguration "aarch64-darwin" "sesav";
       };
     };
 }
