@@ -25,11 +25,10 @@
       };
     in {
       homeConfigurations = {
-        # x86_64
+        # x86_64 Linux
         "sesav@x86_64-linux" = mkHomeConfiguration "x86_64-linux" "sesav";
         # macOS
         "sesav@aarch64-darwin" = mkHomeConfiguration "aarch64-darwin" "sesav";
-        "sesav" = mkHomeConfiguration "aarch64-darwin" "sesav";
       };
     };
 }
