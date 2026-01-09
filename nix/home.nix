@@ -67,6 +67,7 @@
     ]))
     rustup
     uv
+    ranger
     yarn
     zig
 
@@ -113,6 +114,7 @@
     fzf
     gh
     git
+    just
     ruff
     stylua
     tig
