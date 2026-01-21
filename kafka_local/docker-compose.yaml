@@ -1,0 +1,88 @@
+services:
+  kafka:
+    image: confluentinc/cp-kafka:8.0.3
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_NODE_ID: "1"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_PLAINTEXT_INTERNAL:SASL_PLAINTEXT"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:29092,SASL_PLAINTEXT://127.0.0.1:9092,SASL_PLAINTEXT_INTERNAL://kafka:9093"
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_BROKER_ID: "1"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9094"
+      KAFKA_LISTENERS: "PLAINTEXT://:29092,SASL_PLAINTEXT://:9092,SASL_PLAINTEXT_INTERNAL://:9093,CONTROLLER://:9094"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "SASL_PLAINTEXT"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      CLUSTER_ID: "MkU3OEVBNTcwNTJENDM2Qk"
+      # SASL Configuration
+      KAFKA_SASL_ENABLED_MECHANISMS: "SCRAM-SHA-512"
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: "SCRAM-SHA-512"
+      # Super users (users that can perform any operation)
+      KAFKA_SUPER_USERS: "User:admin"
+      # JAAS Configuration for broker
+      KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf"
+    volumes:
+      - ./kafka_server_jaas.conf:/etc/kafka/kafka_server_jaas.conf
+    networks:
+      - kafka-network
+    security_opt:
+      - no-new-privileges:true
+
+  kafka-init:
+    image: confluentinc/cp-kafka:8.0.3
+    container_name: kafka-init
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "Waiting for Kafka to be ready..."
+        for i in $$(seq 1 30); do
+          if kafka-broker-api-versions --bootstrap-server kafka:29092 > /dev/null 2>&1; then
+            echo "Kafka is ready!"
+            break
+          fi
+          echo "Waiting for Kafka... ($$i/30)"
+          sleep 2
+        done
+        echo "Creating SCRAM user: admin"
+        kafka-configs \
+          --bootstrap-server kafka:29092 \
+          --alter \
+          --add-config "SCRAM-SHA-512=[password=password]" \
+          --entity-type users \
+          --entity-name admin
+        if [ $$? -eq 0 ]; then
+          echo "SCRAM user 'admin' created successfully!"
+        else
+          echo "Failed to create SCRAM user (may already exist)"
+        fi
+    depends_on:
+      - kafka
+    networks:
+      - kafka-network
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    hostname: kafka-ui
+    ports:
+      - "8080:8080"
+    environment:
+      DYNAMIC_CONFIG_ENABLED: "true"
+      KAFKA_CLUSTERS_0_NAME: "local"
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka:9093"
+      KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: "SASL_PLAINTEXT"
+      KAFKA_CLUSTERS_0_PROPERTIES_SASL_MECHANISM: "SCRAM-SHA-512"
+      KAFKA_CLUSTERS_0_PROPERTIES_SASL_JAAS_CONFIG: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"admin\" password=\"password\";"
+    depends_on:
+      - kafka
+      - kafka-init
+    networks:
+      - kafka-network
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  kafka-network:
+    driver: bridge
