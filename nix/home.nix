@@ -119,6 +119,7 @@
     tmux
     tokei
     zoxide
+    watchexec
 
     # Shells
     bash
