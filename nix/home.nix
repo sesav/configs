@@ -56,7 +56,7 @@
     lua-language-server
     luarocks
     nodejs_24
-    (python314.withPackages (ps: with ps; [
+    (python313.withPackages (ps: with ps; [
       ipykernel
       ipython
       jupyter
@@ -133,7 +133,7 @@
     zola
   ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
     # Linux only
-    docker
-    docker-compose
+    # docker
+    # docker-compose
   ];
 }
