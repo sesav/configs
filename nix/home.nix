@@ -13,17 +13,13 @@
 
   home.packages = with pkgs; [
     autoconf
-    cmake
     fd
     flex
-    gcc
-    gnumake
     htop
     jq
     less
     m4
     mc
-    pkgconf
     restic
     ripgrep
     screen
@@ -65,7 +61,6 @@
       virtualenv
       wheel
     ]))
-    rustup
     uv
     ranger
     yarn
@@ -131,9 +126,9 @@
     # Other
     home-manager
     zola
-  ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
-    # Linux only
-    # docker
-    # docker-compose
+  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
+    cmake
+    gcc
+    gnumake
   ];
 }
