@@ -15,7 +15,7 @@
     autoconf
     fd
     flex
-    htop
+    btop
     jq
     less
     m4
