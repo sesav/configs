@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 
   imports = [
     ./neovim.nix
@@ -52,7 +52,7 @@
     lua-language-server
     luarocks
     nodejs_24
-    (python313.withPackages (ps: with ps; [
+    (python314.withPackages (ps: with ps; [
       ipykernel
       ipython
       jupyter
