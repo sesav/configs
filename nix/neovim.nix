@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -6,9 +6,7 @@
     vimAlias = true;
     withPython3 = true;
     extraPython3Packages = ps: [ ps.pynvim ps.pip ];
-    extraPackages = with pkgs; [
-      (python3.withPackages (ps: with ps; [ pynvim pip ]))
-    ];
+    extraPackages = with pkgs; [ ];
   };
 
   home.sessionVariables = {
