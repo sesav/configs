@@ -116,6 +116,7 @@
     tokei
     zoxide
     watchexec
+    pgcli
 
     # Shells
     bash
