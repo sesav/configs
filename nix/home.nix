@@ -70,7 +70,12 @@
     # DevOps & Cloud
     ansible
     k9s
-    kcat
+    # Temporary workaround for nixpkgs avro-c++ build failure on darwin.
+    (kcat.overrideAttrs (old: {
+      buildInputs = builtins.filter
+        (pkg: !(builtins.elem pkg [ avro-c libserdes ]))
+        old.buildInputs;
+    }))
     kubectl
     kubectx
     kubernetes-helm
@@ -101,7 +106,12 @@
     graphviz
     pandoc
     plantuml
-    yt-dlp
+    # Work around secretstorage/jeepney DBus check failures on darwin.
+    (yt-dlp.overridePythonAttrs (old: {
+      dependencies = builtins.filter
+        (dep: (dep.pname or "") != "secretstorage")
+        old.dependencies;
+    }))
 
     # Dev
     ctags
