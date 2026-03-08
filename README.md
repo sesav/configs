@@ -25,3 +25,14 @@ Update dependencies:
 nix flake update
 home-manager switch --flake .#sesav@<arch>
 ```
+
+Home-manager '--extra-experimental-features nix-command':
+
+```shell
+nix --extra-experimental-features "nix-command flakes" \
+    run home-manager/master -- init --switch
+```
+
+### Uninstalling Nix
+
+https://nix.dev/manual/nix/latest/installation/uninstall#uninstalling-nix
