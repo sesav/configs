@@ -61,6 +61,8 @@
       setuptools
       virtualenv
       wheel
+      msgspec
+      pydantic
     ]))
     uv
     ranger
