@@ -31,6 +31,7 @@
     unzip
     watch
     zip
+    bat
 
     # GNU utilities
     coreutils
