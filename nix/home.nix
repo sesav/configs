@@ -53,7 +53,6 @@
     lua-language-server
     luarocks
     nodejs_24
-    nodePackages.neovim
     (python314.withPackages (ps: with ps; [
       ipykernel
       ipython
