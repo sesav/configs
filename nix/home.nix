@@ -13,13 +13,15 @@
 
   home.packages = with pkgs; [
     autoconf
+    bat
+    btop
     fd
     flex
-    btop
     jq
     less
     m4
     mc
+    rclone
     restic
     ripgrep
     screen
@@ -31,7 +33,6 @@
     unzip
     watch
     zip
-    bat
 
     # GNU utilities
     coreutils
