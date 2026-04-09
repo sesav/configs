@@ -5,6 +5,7 @@
     defaultEditor = true;
     vimAlias = true;
     withPython3 = true;
+    withRuby = true;
     extraPython3Packages = ps: [ ps.pynvim ps.pip ];
     extraPackages = with pkgs; [ ];
   };
