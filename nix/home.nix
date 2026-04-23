@@ -2,9 +2,9 @@
 {
   home.stateVersion = "25.11";
 
-  imports = [
-    ./neovim.nix
-  ];
+  # imports = [
+  #   ./neovim.nix
+  # ];
 
   programs.direnv = {
     enable = true;
@@ -33,19 +33,6 @@
     unzip
     watch
     zip
-
-    # GNU utilities
-    coreutils
-    diffutils
-    findutils
-    gawk
-    gettext
-    gnugrep
-    gnused
-    gnutar
-    gzip
-    patch
-    which
 
     # Lang & runtimes
     go
@@ -85,23 +72,33 @@
     minikube
 
     # Databases
-    postgresql_18
-    redis
+    # postgresql_18
+    # redis
 
-    # Security & crypto
-    age
-    gnupg
-    gpg-tui
-    pass
+    # Other
+    home-manager
+    zola
+  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
+    cmake
 
-    # Network tools
-    curl
-    iperf
-    nmap
-    syncthing
-    trippy
-    wget
-    wrk
+    # Shells
+    bash
+    fish
+
+    # GNU utilities
+    coreutils
+    diffutils
+    findutils
+    gawk
+    gcc
+    gettext
+    gnugrep
+    gnumake
+    gnused
+    gnutar
+    gzip
+    patch
+    which
 
     # Media & conversion
     exiftool
@@ -116,34 +113,38 @@
         old.dependencies;
     }))
 
+    # Network tools
+    curl
+    iperf
+    nmap
+    syncthing
+    trippy
+    wget
+    wrk
+
     # Dev
     ctags
     fzf
     gh
     git
     just
+    pgcli
     ruff
     stylua
     tig
     tmux
     tokei
-    zoxide
     watchexec
-    pgcli
-
-    # Shells
-    bash
-    fish
+    zoxide
 
     # Shell enhancements
     zsh-syntax-highlighting
 
-    # Other
-    home-manager
-    zola
-  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
-    cmake
-    gcc
-    gnumake
+
+    # Security & crypto
+    age
+    gnupg
+    gpg-tui
+    pass
   ];
 }
