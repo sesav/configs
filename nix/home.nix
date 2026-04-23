@@ -12,28 +12,6 @@
   };
 
   home.packages = with pkgs; [
-    autoconf
-    bat
-    btop
-    fd
-    flex
-    jq
-    less
-    m4
-    mc
-    rclone
-    restic
-    ripgrep
-    screen
-    starship
-    swig
-    tldr
-    tree
-    tree-sitter
-    unzip
-    watch
-    zip
-
     # Lang & runtimes
     go
     jdk
@@ -79,7 +57,28 @@
     home-manager
     zola
   ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
+    autoconf
+    bat
+    btop
     cmake
+    fd
+    flex
+    jq
+    less
+    m4
+    mc
+    rclone
+    restic
+    ripgrep
+    screen
+    starship
+    swig
+    tldr
+    tree
+    tree-sitter
+    unzip
+    watch
+    zip
 
     # Shells
     bash
@@ -139,7 +138,6 @@
 
     # Shell enhancements
     zsh-syntax-highlighting
-
 
     # Security & crypto
     age
