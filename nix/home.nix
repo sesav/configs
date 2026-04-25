@@ -19,17 +19,17 @@
     lua-language-server
     luarocks
     nodejs_24
-    (python314.withPackages (ps: with ps; [
-      ipykernel
-      ipython
-      jupyter
-      pip
-      setuptools
-      virtualenv
-      wheel
-      msgspec
-      pydantic
-    ]))
+    # (python314.withPackages (ps: with ps; [
+    #   ipykernel
+    #   ipython
+    #   jupyter
+    #   pip
+    #   setuptools
+    #   virtualenv
+    #   wheel
+    #   msgspec
+    #   pydantic
+    # ]))
     uv
     ranger
     yarn
