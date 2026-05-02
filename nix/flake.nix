@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    snitch.url = "github:karol-broda/snitch";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, snitch, ... }:
     let
       mkHomeConfiguration = system: username: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
@@ -20,6 +21,20 @@
             home.homeDirectory = if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
               then "/Users/cwm"
               else "/home/${username}";
+          }
+          snitch.homeManagerModules.default
+          {
+            programs.snitch = {
+              enable = true;
+              package = snitch.packages.${system}.default;
+              settings = {
+                defaults = {
+                  theme = "catppuccin-mocha";
+                  interval = "2s";
+                  resolve = true;
+                };
+              };
+            };
           }
         ];
       };
