@@ -2,9 +2,9 @@
 {
   home.stateVersion = "25.11";
 
-  # imports = [
-  #   ./neovim.nix
-  # ];
+  imports = [
+    ./neovim.nix
+  ];
 
   programs.direnv = {
     enable = true;
@@ -18,8 +18,6 @@
     luarocks
     nodejs_24
     ranger
-    rustc
-    cargo
     uv
     zig
     (python314.withPackages (ps: with ps; [
