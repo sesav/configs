@@ -19,6 +19,7 @@
     nodejs_24
     ranger
     rustc
+    cargo
     uv
     zig
     (python314.withPackages (ps: with ps; [
