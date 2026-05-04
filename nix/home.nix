@@ -2,9 +2,9 @@
 {
   home.stateVersion = "25.11";
 
-  imports = [
-    ./neovim.nix
-  ];
+  # imports = [
+  #   ./neovim.nix
+  # ];
 
   programs.direnv = {
     enable = true;
