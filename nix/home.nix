@@ -13,7 +13,6 @@
 
   home.packages = with pkgs; [
     # Lang & runtimes
-    go
     lua
     luarocks
     nodejs_24
@@ -60,6 +59,7 @@
     cmake
     fd
     flex
+    go
     jq
     less
     m4
