@@ -8,6 +8,16 @@
   };
 
   home.packages = with pkgs; [
+
+    # Other
+    home-manager
+    zola
+
+  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
+    # Shells
+    bash
+    fish
+
     # Lang & runtimes
     go
     lua
@@ -15,6 +25,17 @@
     nodejs_24
     ranger
     uv
+    (python314.withPackages (ps: with ps; [
+      ipykernel
+      ipython
+      jupyter
+      pip
+      setuptools
+      virtualenv
+      wheel
+      msgspec
+      pydantic
+    ]))
 
     # Dev
     bat
@@ -71,34 +92,6 @@
     ansible
     kubectl
     kubectx
-
-    # Fonts
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.noto
-    nerd-fonts.hack
-    nerd-fonts.ubuntu
-    nerd-fonts.jetbrains-mono
-
-    # Other
-    home-manager
-    zola
-  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
-    # Shells
-    bash
-    fish
-
-    (python314.withPackages (ps: with ps; [
-      ipykernel
-      ipython
-      jupyter
-      pip
-      setuptools
-      virtualenv
-      wheel
-      msgspec
-      pydantic
-    ]))
 
     # GNU utilities
     coreutils
