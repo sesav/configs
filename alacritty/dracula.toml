@@ -11,7 +11,7 @@
 
 background = "#282a36"
 # foreground = "#f8f8f2"
-foreground = "#d9d9d9"
+foreground = "#dedede"
 bright_foreground = "#ffffff"
 
 [colors.cursor]

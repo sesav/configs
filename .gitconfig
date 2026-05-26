@@ -1,0 +1,37 @@
+[core]
+    filemode = false
+    editor = /usr/bin/nvim
+
+[user]
+    name = "Sergey Silaev"
+    email = "hello@8am.dev"
+    signingkey = ~/.ssh/id_ed25519
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    format = ssh
+
+[alias]
+    st = status -b
+    c = commit
+    co = checkout
+    br = branch
+    slog = log --pretty=format:"%C(auto)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%an%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
+    glog = log --graph --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%an%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
+    wlog = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%an%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
+    gr = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    wt = worktree
+
+[protocol "file"]
+    allow = always
+
+[push]
+    autoSetupRemote = true
+
+[includeIf "gitdir:~/repos/proj1/"]
+    path = "~/repos/proj1/.gitconfig"
+
+[includeIf "gitdir:~/repos/proj2/"]
+    path = "~/repos/proj2/.gitconfig"
