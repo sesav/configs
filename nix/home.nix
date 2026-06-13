@@ -23,7 +23,6 @@
     lua
     luarocks
     nodejs_24
-    ranger
     uv
     (python314.withPackages (ps: with ps; [
       ipykernel
