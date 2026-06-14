@@ -14,38 +14,23 @@ style = "Block"
 unfocused_hollow = true
 
 [font]
-size = 14.0
+size = 16.0
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.normal]
-family = "FantasqueSansM Nerd Font Mono"
-# family = "DroidSansM Nerd Font"
-# family = "FiraCode Nerd Font Mono"
-# family = "Cascadia Code"
-# family = "Liberation Mono for Powerline"
+family = "Hack Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "FantasqueSansM Nerd Font Mono"
-# family = "DroidSansM Nerd Font"
-# family = "FiraCode Nerd Font Mono"
-# family = "Cascadia Code"
-# family = "Liberation Mono for Powerline"
-# family = "Fantasque Sans Mono"
+family = "Hack Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "FantasqueSansM Nerd Font Mono"
-# family = "DroidSansM Nerd Font"
-# family = "FiraCode Nerd Font Mono"
-# family = "Cascadia Code"
-# family = "Liberation Mono for Powerline"
-# family = "Fantasque Sans Mono"
+family = "Hack Nerd Font"
 style = "Regular"
-# style = "Italic"
 
 [font.offset]
 x = 0
@@ -79,11 +64,4 @@ mouse = "Right"
 [general]
 
 live_config_reload = true
-# import = ["~/.config/alacritty/solarized_light.toml"]
-# import = ["~/.config/alacritty/solarized_dark.toml"]
 import = ["~/.config/alacritty/dracula.toml"]
-
-# import = ["~/.config/alacritty/github_light.toml"]
-# import = ["~/.config/alacritty/github_dark.toml"]
-# import = ["~/.config/alacritty/gruvbox_dark.toml"]
-# import = ["~/.config/alacritty/gruvbox_light.toml"]
