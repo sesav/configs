@@ -1,6 +1,6 @@
 # ~/.zshrc
 
-# XDG
+# XDG base dirs
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CACHE_HOME="${HOME}/.cache"
@@ -35,7 +35,7 @@ precmd() { vcs_info }
 setopt PROMPT_SUBST
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '(%b)'
-PROMPT='%F{green}%n@%m%f %F{135}%2~%f${vcs_info_msg_0_:+ %F{green}${vcs_info_msg_0_}%f$ '
+PROMPT='%F{green}%n@%m%f %F{135}%2~%f${vcs_info_msg_0_:+ %F{green}${vcs_info_msg_0_}%f $ '
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
