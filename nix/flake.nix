@@ -19,7 +19,7 @@
           {
             home.username = username;
             home.homeDirectory = if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
-              then "/Users/cwm"
+              then "/Users/${username}"
               else "/home/${username}";
           }
           snitch.homeManagerModules.default
