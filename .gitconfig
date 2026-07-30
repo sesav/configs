@@ -1,17 +1,29 @@
 [core]
     filemode = false
     editor = /usr/bin/nvim
+    sshCommand = ssh -i ~/.ssh/id_ed25519.pub -o IdentitiesOnly=yes
 
 [user]
     name = "Sergey Silaev"
     email = "hello@8am.dev"
-    signingkey = ~/.ssh/id_ed25519
+    signingkey = ~/.ssh/id_ed25519.pub
 
 [commit]
     gpgsign = true
 
+[tag]
+    gpgsign = true
+
 [gpg]
     format = ssh
+
+[sendemail]
+    smtpServer = 127.0.0.1
+    smtpServerPort = 1025
+    smtpEncryption = STARTTLS
+    smtpUser = hello@8am.dev
+    from = Sergey Silaev <hello@8am.dev>
+    confirm = always
 
 [alias]
     st = status -b
@@ -30,8 +42,9 @@
 [push]
     autoSetupRemote = true
 
-[includeIf "gitdir:~/repos/proj1/"]
-    path = "~/repos/proj1/.gitconfig"
+[credential]
+    ; for localhost only
+    helper = store
 
-[includeIf "gitdir:~/repos/proj2/"]
-    path = "~/repos/proj2/.gitconfig"
+; [includeIf "gitdir:~/repos/whatever/"]
+;     path = "~/repos/whatever/.gitconfig"
