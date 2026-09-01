@@ -13,7 +13,7 @@
     home-manager
     zola
 
-  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isLinux) [
+  ] ++ pkgs.lib.optionals (!pkgs.stdenv.hostPlatform.isLinux) [
     # Shells
     bash
     fish

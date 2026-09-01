@@ -18,7 +18,7 @@
           ./home.nix
           {
             home.username = username;
-            home.homeDirectory = if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
+            home.homeDirectory = if nixpkgs.legacyPackages.${system}.stdenv.hostPlatform.isDarwin
               then "/Users/${username}"
               else "/home/${username}";
           }
