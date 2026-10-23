@@ -1,11 +1,16 @@
-# ~/.zshrc
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored
+zstyle :compinstall filename '/home/sesav/.zshrc'
+
+autoload -Uz compinit vcs_info select-word-style
+compinit
 
 # XDG base dirs
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CACHE_HOME="${HOME}/.cache"
-
-autoload -Uz compinit vcs_info select-word-style
 
 # Cache completions, rebuild at most once per day
 () {
@@ -19,6 +24,9 @@ autoload -Uz compinit vcs_info select-word-style
 }
 
 select-word-style bash
+ 
+# Bitwarden
+export SSH_AUTH_SOCK="${HOME}/.bitwarden-ssh-agent.sock"
 
 # History
 HISTFILE=~/.zsh_history
@@ -38,10 +46,10 @@ zstyle ':vcs_info:git:*' formats '(%b)'
 PROMPT='%F{green}%n@%m%f %F{135}%2~%f${vcs_info_msg_0_:+ %F{green}${vcs_info_msg_0_}%f $ '
 
 # Plugins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # PATH and tools
-export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:${PATH}"
 export TMUX_CONFIG="${XDG_CONFIG_HOME}/tmux/tmux.conf"
 export TIG_CONFIG="${XDG_CONFIG_HOME}/tig/config"
 export TIG_EDITOR=/usr/bin/nvim
@@ -64,12 +72,17 @@ command -v fzf    &>/dev/null && eval "$(fzf --zsh)"
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # Rust
-[[ -f "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
+# [[ -f "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
 
 # uv
-[[ -f "${HOME}/.local/bin/env" ]] && source "${HOME}/.local/bin/env"
+# [[ -f "${HOME}/.local/bin/env" ]] && source "${HOME}/.local/bin/env"
 
 # Go
 export GOPATH="${HOME}/go"
 export GOBIN="${GOPATH}/bin"
 export PATH="${GOBIN}:${PATH}"
+
+# opencode
+export PATH=/home/sesav/.opencode/bin:$PATH
+
+if [ -e /home/sesav/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sesav/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
