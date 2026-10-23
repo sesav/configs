@@ -1,0 +1,41 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run zed: open default keymap
+// from the command palette.
+[
+{
+"context": "Workspace",
+"bindings": {
+// "shift shift": "file_finder::Toggle"
+},
+},
+{
+"context": "Editor && vim_mode == insert",
+"bindings": {
+// "j k": "vim::NormalBefore"
+},
+},
+{
+"context": "Editor && (vim_mode == normal || vim_mode == visual) && !menu",
+"bindings": {
+"ctrl-j": ["workspace::SendKeystrokes", "4 j"],
+"ctrl-k": ["workspace::SendKeystrokes", "4 k"],
+"ctrl-h": ["workspace::SendKeystrokes", "4 h"],
+"ctrl-l": ["workspace::SendKeystrokes", "4 l"],
+"ctrl-down": ["workspace::SendKeystrokes", "4 down"],
+"ctrl-up": ["workspace::SendKeystrokes", "4 up"],
+"ctrl-left": ["workspace::SendKeystrokes", "b"],
+"ctrl-right": ["workspace::SendKeystrokes", "e"]
+}
+},
+{
+"context": "Editor && !menu",
+"bindings": {
+"ctrl-left": "editor::MoveToPreviousWordStart",
+"ctrl-right": "editor::MoveToNextWordEnd",
+}
+}
+]
