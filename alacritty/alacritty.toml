@@ -21,15 +21,16 @@ x = 0
 y = 0
 
 [font.normal]
-family = "Hack Nerd Font"
+family = "Hack Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "Hack Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "Hack Nerd Font"
+# family = "Fantasque Sans Mono"
+family = "Hack Nerd Font Mono"
 style = "Regular"
 
 [font.offset]
@@ -62,6 +63,13 @@ action = "PasteSelection"
 mouse = "Right"
 
 [general]
+ipc_socket = true
 
 live_config_reload = true
-import = ["~/.config/alacritty/dracula.toml"]
+# import = ["~/.config/alacritty/dracula.toml"]
+import = ["~/.config/alacritty/catppuccin-latte.toml"]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
