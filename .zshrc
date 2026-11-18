@@ -1,4 +1,3 @@
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
@@ -11,6 +10,7 @@ compinit
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CACHE_HOME="${HOME}/.cache"
+export EDITOR="nvim"
 
 # Cache completions, rebuild at most once per day
 () {
@@ -34,6 +34,8 @@ HISTSIZE=500000
 SAVEHIST=500000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE
 
+bindkey -e  # Use Emacs-style line editing
+
 # Key bindings
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
@@ -49,7 +51,7 @@ PROMPT='%F{green}%n@%m%f %F{135}%2~%f${vcs_info_msg_0_:+ %F{green}${vcs_info_msg
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # PATH and tools
-export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${HOME}/.local/npm/bin:${HOME}/.cargo/bin:${PATH}"
 export TMUX_CONFIG="${XDG_CONFIG_HOME}/tmux/tmux.conf"
 export TIG_CONFIG="${XDG_CONFIG_HOME}/tig/config"
 export TIG_EDITOR=/usr/bin/nvim
